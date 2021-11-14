@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property><!-- ou son nouveau 
+			nom com.mysql.cj.jdbc.Driver -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/tennis?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Paris</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+
+		<!-- dbcp connection pool configuration -->
+		<property name="hibernate.dbcp.initialSize">5</property>
+		<!--property name="hibernate.dbcp.maxTotal">20</property> <property name="hibernate.dbcp.maxIdle">10</property> 
+			<property name="hibernate.dbcp.minIdle">5</property> <property name="hibernate.dbcp.maxWaitMillis">-1</property -->
+
+		<!-- Select our SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+		<!-- Echo the SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Set the current session context -->
+		<property name="current_session_context_class">thread</property>
+		<!-- Set the cache provider -->
+		<property name="cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">validate</property>
+
+
+		<!-- Enities to map -->
+		<mapping class="hw.aef.tennis.core.entity.Joueur" />
+		<mapping class="hw.aef.tennis.core.entity.Tournoi" />
+		<mapping class="hw.aef.tennis.core.entity.Epreuve" />
+		<mapping class="hw.aef.tennis.core.entity.Score" />
+		<mapping class="hw.aef.tennis.core.entity.Match" />
+
+	</session-factory>
+
+</hibernate-configuration>
